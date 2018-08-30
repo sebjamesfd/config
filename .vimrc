@@ -1,5 +1,5 @@
 set nocompatible              " be iMproved, required
-filetype off                  " required
+
 
 " set the runtime path to include Vundle and initialize
 set rtp+=~/.vim/bundle/Vundle.vim
@@ -13,7 +13,6 @@ Plugin 'gmarik/Vundle.vim'
 
 Plugin 'tpope/vim-fugitive'
 Plugin 'scrooloose/nerdtree'
-Plugin 'Valloric/YouCompleteMe'
 Plugin 'sjl/gundo.vim'
 Plugin 'scrooloose/syntastic'
 Plugin 'altercation/vim-colors-solarized'
@@ -25,16 +24,19 @@ Plugin 'tyok/nerdtree-ack'
 Plugin 'elzr/vim-json.git'
 Plugin 'tpope/vim-commentary'
 Plugin 'tpope/vim-surround'
-Plugin 'vim-scripts/taglist.vim'
 " Track the engine.
 Plugin 'SirVer/ultisnips'
 " " Snippets are separated from the engine. Add this if you want them:
 Plugin 'honza/vim-snippets'
 Plugin 'vimwiki/vimwiki'
-Plugin 'ctrlpvim/ctrlp.vim'
+"Plugin 'ctrlpvim/ctrlp.vim'
 Plugin 'tpope/vim-vinegar'
 Plugin 'rodjek/vim-puppet'
 "Plugin 'davidhalter/jedi-vim'
+Plugin 'junegunn/fzf'
+Plugin 'alfredodeza/pytest'
+Plugin 'tpope/vim-fireplace'
+Plugin 'tpope/vim-salve'
 
 call vundle#end()            " required
 filetype plugin indent on    " required
@@ -104,3 +106,32 @@ let g:ctrlp_custom_ignore = {
 
 " " Syntastic
 let g:syntastic_python_checkers = ['flake8']
+
+nmap oo o<Esc>k 
+nmap OO O<Esc>j
+
+" " FZF
+map <C-p> :FZF<CR>
+
+let g:fzf_colors =
+\ { 'fg':      ['fg', 'Normal'],
+  \ 'bg':      ['bg', 'Normal'],
+  \ 'hl':      ['fg', 'Comment'],
+  \ 'fg+':     ['fg', 'CursorLine', 'CursorColumn', 'Normal'],
+  \ 'bg+':     ['bg', 'CursorLine', 'CursorColumn'],
+  \ 'hl+':     ['fg', 'Statement'],
+  \ 'info':    ['fg', 'PreProc'],
+  \ 'prompt':  ['fg', 'Conditional'],
+  \ 'pointer': ['fg', 'Exception'],
+  \ 'marker':  ['fg', 'Keyword'],
+  \ 'spinner': ['fg', 'Label'],
+  \ 'header':  ['fg', 'Comment'] }
+
+" Pytest
+nmap <silent><Leader>f <Esc>:Pytest file<CR>
+nmap <silent><Leader>c <Esc>:Pytest class<CR>
+nmap <silent><Leader>m <Esc>:Pytest method<CR>
+
+" Clojure fireplace
+nnoremap <C-e> :Eval<CR>
+nnoremap E :%Eval<CR>
